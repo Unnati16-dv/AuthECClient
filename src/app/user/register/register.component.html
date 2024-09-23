@@ -1,0 +1,50 @@
+<form [formGroup]="registerForm" (ngSubmit)="RegisterUser()">
+    <div>
+        <input formControlName="fullName" placeholder="Full Name">
+    </div>
+    <div *ngIf="hasDisplayableError('fullName') && registerForm.controls['fullName'].hasError('required')">
+        Please enter the full name.
+    </div>
+
+    <div>
+        <input formControlName="email" placeholder="Email">
+    </div>
+    <div *ngIf="hasDisplayableError('email')">
+        <div *ngIf="registerForm.controls['email'].hasError('required')">
+            Please enter the email.
+        </div>
+        <div *ngIf="registerForm.controls['email'].hasError('email')">
+            Please enter valid email.
+        </div>
+    </div>
+
+    <div>
+        <input formControlName="password" placeholder="Password">
+    </div>
+    <div *ngIf="hasDisplayableError('password')">
+        <ng-container [ngSwitch]="registerForm.controls['password'].errors | firstKey">
+            <div *ngSwitchCase="'required'">
+                Please enter the password.
+            </div>
+            <div *ngSwitchCase="'minlength'">
+                Please enter atleast 6 characters.
+            </div>
+            <div *ngSwitchCase="'pattern'">
+                Please enter atleast 1 special character, 1 number and 1 capital letter.
+            </div>
+        </ng-container>
+    </div>
+
+    <div>
+        <input formControlName="confirmPassword" placeholder="Confirm Password">
+    </div>
+    <div *ngIf="hasDisplayableError('confirmPassword') && registerForm.controls['confirmPassword'].hasError('passwordMismatch')">
+        Password doesn't match.
+    </div>
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>
+<div>
+    <a routerLink="/login">Login</a>
+</div>

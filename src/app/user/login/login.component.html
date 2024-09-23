@@ -1,0 +1,22 @@
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="LoginUser()">
+        <div>
+            <input formControlName="email" placeholder="Email">
+        </div>
+        <div *ngIf="hasDisplayableError('email') && loginForm.controls['email'].hasError('required')">
+            Please enter the email.
+        </div>
+    
+        <div>
+            <input formControlName="password" placeholder="Password">
+        </div>
+        <div *ngIf="hasDisplayableError('password') && loginForm.controls['password'].hasError('required')">
+            Please enter the password.
+        </div>
+    
+        <button type="submit">Login</button>
+    </form>
+    <div>
+        <a routerLink="/signup">Register</a>
+    </div>    
+</div>

@@ -1,3 +1,8 @@
+About this app:
+- I have created a basic UI for login and register.
+- Yet have to add styling to it, so right now it just is plain form without any styling. Will add that later. **
+- Also I have to protect the routes, which I will do later too **
+
 # AuthECClient
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
